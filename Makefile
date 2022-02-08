@@ -1,17 +1,25 @@
-binaries= almostprime.out almostdebug.out
-CXX_FLAGS= -pedantic -Wall -Wextra -Werror -Wfloat-equal
-CXX_DEBUG_FLAGS= -g -O0 -Wcast-qual -Wnoexcept -Wmissing-declarations -Wundef
+binary= almostprime.out
+CXX_FLAGS= -pedantic \
+					 -Wall \
+					 -Wextra \
+					 -Werror -Wfloat-equal \
+					 -Wmissing-declarations \
+					 -Wunreachable-code \
+					 -Wunused \
+					 -Wunused-parameter \
+					 -Wimport
+CXX_DEBUG_FLAGS= -g -O0
 
 all: clean main run
 
 main: 
-	g++ $(CXX_FLAGS) -o almostprime.out almost_prime.cpp
+	g++ $(CXX_FLAGS) -o $(binary) almost_prime.cpp
 
 run:
 	./almostprime.out
 
 clean:
-	rm -f $(binaries) *.o
+	rm -v $(binary)
 
-debug:
-	g++ -o almostdebug.out $(CXX_FLAGS) $(CXX_DEBUG_FLAGS) almost_prime.cpp 
+debug: clean
+	g++ -o $(binary) $(CXX_FLAGS) $(CXX_DEBUG_FLAGS) almost_prime.cpp 
