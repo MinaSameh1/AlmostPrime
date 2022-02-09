@@ -1,25 +1,5 @@
-#include<iostream>
+#include "almostPrime.hpp"
 #include<math.h>
-
-using namespace std;
-
-// Functions
-bool checkPrime(int num); // Checks if number is Prime
-int getTotalAlmostPrime(int range); // Gets the amount of almost prime numbers
-bool checkIfAlmostPrime(int num); // Checks if its an almost prime
-
-// Main
-int main(void)
-{
-  int range= 21;
-
-  // cin >> range;
-
-  int total = getTotalAlmostPrime(range);
-
-  cout << total;
-  return 0;
-}
 
 /*
  * Gets all the almostPrime numbers in range
