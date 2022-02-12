@@ -1,19 +1,18 @@
-#include<iostream>
-#include<math.h>
+#include <iostream>
+#include <math.h>
 
 using namespace std;
 
 // Functions
-bool checkPrime(int num); // Checks if number is Prime
+bool checkPrime(int num);           // Checks if number is Prime
 int getTotalAlmostPrime(int range); // Gets the amount of almost prime numbers
-bool checkIfAlmostPrime(int num); // Checks if its an almost prime
+bool checkIfAlmostPrime(int num);   // Checks if its an almost prime
 
 // Main
-int main(void)
-{
-  int range=10;
+int main(void) {
+  int range;
 
-  // cin >> range;
+  cin >> range;
 
   int total = getTotalAlmostPrime(range);
 
@@ -29,12 +28,10 @@ int main(void)
  *
  * @return total => Integer value of the total numbers that are almost prime
  */
-int getTotalAlmostPrime(int range)
-{
+int getTotalAlmostPrime(int range) {
   int total = 0;
-  for(int i=2; i<=range;i++){
-    if(checkIfAlmostPrime(i))
-    {
+  for (int i = 2; i <= range; i++) {
+    if (checkIfAlmostPrime(i)) {
       total++;
     }
   }
@@ -49,10 +46,10 @@ int getTotalAlmostPrime(int range)
  *
  * @return Bool => True if its prime false if its not prime
  */
-bool checkPrime(int num)
-{
-  for(int i=2; i <= ceil((double)sqrt(num)); i++){
-    if((num % i) == 0) return false;
+bool checkPrime(int num) {
+  for (int i = 2; i <= ceil((double)sqrt(num)); i++) {
+    if ((num % i) == 0)
+      return false;
   }
   return true;
 }
@@ -65,12 +62,13 @@ bool checkPrime(int num)
  *
  * @return Bool => True if its almostprime false if its not prime
  */
-bool checkIfAlmostPrime(int num)
-{
-  int temp= -1;
-  for(int i=2;i<num;i++) {
-    if((num % i) == 0 && checkPrime(i)) {
-      if((i != temp) && (i * temp == num)) { return true; }
+bool checkIfAlmostPrime(int num) {
+  int temp = -1;
+  for (int i = 2; i < num; i++) {
+    if ((num % i) == 0 && checkPrime(i)) {
+      if ((i != temp) && (i * temp == num)) {
+        return true;
+      }
       temp = i;
     }
   }
